@@ -18,7 +18,7 @@
     <modules>
         <module>module-demo</module>
         <module>database-file-transfer</module>
-<!--        <module>spring-batch</module>-->
+        <module>spring-batch</module>
         <module>job-database</module>
         <module>session-management</module>
         <module>tool-telnet</module>
