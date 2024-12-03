@@ -1,0 +1,6 @@
+detection:
+  #  type: DATA (xuất data table), DLL (xuất DLL), TELNET (kiểm traconfig: ip)
+  #  nếu type = DATA --> module.type: ALL(xuất all table) != ALL(xuất table được chỉ định module.table)
+  module:
+    type-code: DLL
+    table: lib_document,lib_linhvuc,lib_document_phanphoi,lib_document_attach,fem_file,lib_document_phanphoi_act_his

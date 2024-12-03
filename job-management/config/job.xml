@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jobs>
+    <job>
+        <name>JobClearTrash</name>
+        <classJob>vn.ndm.jobmanagement.module.JobClearTrash</classJob>
+        <active>1</active>
+        <cronTime>300000</cronTime>
+        <params>
+            <param>C:/Windows/Temp</param>
+            <param>C:/Users/admin/AppData/Local/Temp</param>
+        </params>
+    </job>
+    <job>
+        <name>JobClearTrash2</name>
+        <classJob>vn.ndm.jobmanagement.module.JobClearTrash2</classJob>
+        <active>1</active>
+        <cronTime>21111</cronTime>
+        <params>
+            <param>/path/to/some/directory</param>
+            <param>/path/to/some/directory2</param>
+        </params>
+    </job>
+    <job>
+        <name>Job Clear Trash 3</name>
+        <classJob>vn.ndm.jobmanagement.module.AnotherJobClass</classJob>
+        <active>0</active>
+        <cronTime>0 0 12 ? * MON-FRI</cronTime>
+        <params>
+            <param>/path/to/some/directory</param>
+        </params>
+    </job>
+</jobs>

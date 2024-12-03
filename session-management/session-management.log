@@ -1,0 +1,5 @@
+2023-08-15 14:31:00.187  INFO 18392 --- [main] v.n.s.m.SessionManagementApplication     : Starting SessionManagementApplication using Java 11.0.15.1 on ND-Senses with PID 18392 (D:\example\jobs\session-management\target\classes started by admin in D:\example\jobs\session-management)
+2023-08-15 14:31:00.189  INFO 18392 --- [main] v.n.s.m.SessionManagementApplication     : No active profile set, falling back to 1 default profile: "default"
+2023-08-15 14:31:00.699  INFO 18392 --- [main] v.n.s.management.service.SessionManager  : ==> Init initSession
+2023-08-15 14:31:00.701  INFO 18392 --- [main] v.n.s.management.service.SessionManager  : ==> OK Init session All Session 0 , Free Session: 0 , numFree: 0
+2023-08-15 14:31:00.771  INFO 18392 --- [main] v.n.s.m.SessionManagementApplication     : Started SessionManagementApplication in 1.035 seconds (JVM running for 2.437)

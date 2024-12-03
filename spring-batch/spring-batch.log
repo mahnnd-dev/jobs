@@ -1,0 +1,259 @@
+2023-08-24 14:43:31.800  INFO 5888 --- [main] vn.ndm.BatchProcessingApplication        : Starting BatchProcessingApplication using Java 11.0.15.1 on VIRUS-BUG with PID 5888 (D:\example\jobs\spring-batch\target\classes started by admin in D:\example\jobs\spring-batch)
+2023-08-24 14:43:31.803  INFO 5888 --- [main] vn.ndm.BatchProcessingApplication        : No active profile set, falling back to 1 default profile: "default"
+2023-08-24 14:43:32.167  WARN 5888 --- [main] s.c.a.AnnotationConfigApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.support.BeanDefinitionOverrideException: Invalid bean definition with name 'jobExport' defined in class path resource [vn/ndm/service/impl/ExportDLLImpl.class]: Cannot register bean definition [Root bean: class [null]; scope=; abstract=false; lazyInit=null; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=exportDLLImpl; factoryMethodName=jobExport; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [vn/ndm/service/impl/ExportDLLImpl.class]] for bean 'jobExport': There is already [Root bean: class [null]; scope=; abstract=false; lazyInit=null; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=databaseStatsToolImpl; factoryMethodName=jobExport; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [vn/ndm/service/impl/DatabaseStatsToolImpl.class]] bound.
+2023-08-24 14:43:32.175  INFO 5888 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2023-08-24 14:43:32.195 ERROR 5888 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The bean 'jobExport', defined in class path resource [vn/ndm/service/impl/ExportDLLImpl.class], could not be registered. A bean with that name has already been defined in class path resource [vn/ndm/service/impl/DatabaseStatsToolImpl.class] and overriding is disabled.
+
+Action:
+
+Consider renaming one of the beans or enabling overriding by setting spring.main.allow-bean-definition-overriding=true
+
+2023-08-24 14:45:43.982  INFO 4316 --- [main] vn.ndm.BatchProcessingApplication        : Starting BatchProcessingApplication using Java 11.0.15.1 on VIRUS-BUG with PID 4316 (D:\example\jobs\spring-batch\target\classes started by admin in D:\example\jobs\spring-batch)
+2023-08-24 14:45:43.985  INFO 4316 --- [main] vn.ndm.BatchProcessingApplication        : No active profile set, falling back to 1 default profile: "default"
+2023-08-24 14:45:44.364  WARN 4316 --- [main] s.c.a.AnnotationConfigApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.support.BeanDefinitionOverrideException: Invalid bean definition with name 'jobExport' defined in class path resource [vn/ndm/service/impl/ExportDLLImpl.class]: Cannot register bean definition [Root bean: class [null]; scope=; abstract=false; lazyInit=null; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=exportDLLImpl; factoryMethodName=jobExport; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [vn/ndm/service/impl/ExportDLLImpl.class]] for bean 'jobExport': There is already [Root bean: class [null]; scope=; abstract=false; lazyInit=null; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=databaseStatsToolImpl; factoryMethodName=jobExport; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [vn/ndm/service/impl/DatabaseStatsToolImpl.class]] bound.
+2023-08-24 14:45:44.371  INFO 4316 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2023-08-24 14:45:44.387 ERROR 4316 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The bean 'jobExport', defined in class path resource [vn/ndm/service/impl/ExportDLLImpl.class], could not be registered. A bean with that name has already been defined in class path resource [vn/ndm/service/impl/DatabaseStatsToolImpl.class] and overriding is disabled.
+
+Action:
+
+Consider renaming one of the beans or enabling overriding by setting spring.main.allow-bean-definition-overriding=true
+
+2023-08-24 14:49:44.518  INFO 8524 --- [main] vn.ndm.BatchProcessingApplication        : Starting BatchProcessingApplication using Java 11.0.15.1 on VIRUS-BUG with PID 8524 (D:\example\jobs\spring-batch\target\classes started by admin in D:\example\jobs\spring-batch)
+2023-08-24 14:49:44.521  INFO 8524 --- [main] vn.ndm.BatchProcessingApplication        : No active profile set, falling back to 1 default profile: "default"
+2023-08-24 14:49:44.861  WARN 8524 --- [main] s.c.a.AnnotationConfigApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.support.BeanDefinitionOverrideException: Invalid bean definition with name 'jobExport' defined in class path resource [vn/ndm/service/impl/ExportDLLImpl.class]: Cannot register bean definition [Root bean: class [null]; scope=; abstract=false; lazyInit=null; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=exportDLLImpl; factoryMethodName=jobExport; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [vn/ndm/service/impl/ExportDLLImpl.class]] for bean 'jobExport': There is already [Root bean: class [null]; scope=; abstract=false; lazyInit=null; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=databaseStatsToolImpl; factoryMethodName=jobExport; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [vn/ndm/service/impl/DatabaseStatsToolImpl.class]] bound.
+2023-08-24 14:49:44.868  INFO 8524 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2023-08-24 14:49:44.885 ERROR 8524 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The bean 'jobExport', defined in class path resource [vn/ndm/service/impl/ExportDLLImpl.class], could not be registered. A bean with that name has already been defined in class path resource [vn/ndm/service/impl/DatabaseStatsToolImpl.class] and overriding is disabled.
+
+Action:
+
+Consider renaming one of the beans or enabling overriding by setting spring.main.allow-bean-definition-overriding=true
+
+2023-08-24 14:50:11.311  INFO 10972 --- [main] vn.ndm.BatchProcessingApplication        : Starting BatchProcessingApplication using Java 11.0.15.1 on VIRUS-BUG with PID 10972 (D:\example\jobs\spring-batch\target\classes started by admin in D:\example\jobs\spring-batch)
+2023-08-24 14:50:11.314  INFO 10972 --- [main] vn.ndm.BatchProcessingApplication        : No active profile set, falling back to 1 default profile: "default"
+2023-08-24 14:50:11.682  WARN 10972 --- [main] s.c.a.AnnotationConfigApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.support.BeanDefinitionOverrideException: Invalid bean definition with name 'jobExport' defined in class path resource [vn/ndm/service/impl/ExportDLLImpl.class]: Cannot register bean definition [Root bean: class [null]; scope=; abstract=false; lazyInit=null; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=exportDLLImpl; factoryMethodName=jobExport; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [vn/ndm/service/impl/ExportDLLImpl.class]] for bean 'jobExport': There is already [Root bean: class [null]; scope=; abstract=false; lazyInit=null; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=databaseStatsToolImpl; factoryMethodName=jobExport; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [vn/ndm/service/impl/DatabaseStatsToolImpl.class]] bound.
+2023-08-24 14:50:11.692  INFO 10972 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2023-08-24 14:50:11.712 ERROR 10972 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The bean 'jobExport', defined in class path resource [vn/ndm/service/impl/ExportDLLImpl.class], could not be registered. A bean with that name has already been defined in class path resource [vn/ndm/service/impl/DatabaseStatsToolImpl.class] and overriding is disabled.
+
+Action:
+
+Consider renaming one of the beans or enabling overriding by setting spring.main.allow-bean-definition-overriding=true
+
+2023-08-24 14:59:16.795  INFO 17616 --- [main] vn.ndm.BatchProcessingApplication        : Starting BatchProcessingApplication using Java 1.8.0_321 on VIRUS-BUG with PID 17616 (D:\example\jobs\spring-batch\target\classes started by admin in D:\example\jobs\spring-batch)
+2023-08-24 14:59:16.798  INFO 17616 --- [main] vn.ndm.BatchProcessingApplication        : No active profile set, falling back to 1 default profile: "default"
+2023-08-24 14:59:17.116  WARN 17616 --- [main] s.c.a.AnnotationConfigApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.support.BeanDefinitionOverrideException: Invalid bean definition with name 'jobExport' defined in class path resource [vn/ndm/service/impl/ExportDLLImpl.class]: Cannot register bean definition [Root bean: class [null]; scope=; abstract=false; lazyInit=null; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=exportDLLImpl; factoryMethodName=jobExport; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [vn/ndm/service/impl/ExportDLLImpl.class]] for bean 'jobExport': There is already [Root bean: class [null]; scope=; abstract=false; lazyInit=null; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=databaseStatsToolImpl; factoryMethodName=jobExport; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [vn/ndm/service/impl/DatabaseStatsToolImpl.class]] bound.
+2023-08-24 14:59:17.123  INFO 17616 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2023-08-24 14:59:17.138 ERROR 17616 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The bean 'jobExport', defined in class path resource [vn/ndm/service/impl/ExportDLLImpl.class], could not be registered. A bean with that name has already been defined in class path resource [vn/ndm/service/impl/DatabaseStatsToolImpl.class] and overriding is disabled.
+
+Action:
+
+Consider renaming one of the beans or enabling overriding by setting spring.main.allow-bean-definition-overriding=true
+
+2023-08-24 15:02:00.984  INFO 10580 --- [main] vn.ndm.BatchProcessingApplication        : Starting BatchProcessingApplication using Java 1.8.0_321 on VIRUS-BUG with PID 10580 (D:\example\jobs\spring-batch\target\classes started by admin in D:\example\jobs\spring-batch)
+2023-08-24 15:02:00.987  INFO 10580 --- [main] vn.ndm.BatchProcessingApplication        : No active profile set, falling back to 1 default profile: "default"
+2023-08-24 15:02:01.286  WARN 10580 --- [main] s.c.a.AnnotationConfigApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.support.BeanDefinitionOverrideException: Invalid bean definition with name 'step1' defined in class path resource [vn/ndm/service/impl/ExportDLLImpl.class]: Cannot register bean definition [Root bean: class [null]; scope=; abstract=false; lazyInit=null; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=exportDLLImpl; factoryMethodName=step1; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [vn/ndm/service/impl/ExportDLLImpl.class]] for bean 'step1': There is already [Root bean: class [null]; scope=; abstract=false; lazyInit=null; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=databaseStatsToolImpl; factoryMethodName=step1; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [vn/ndm/service/impl/DatabaseStatsToolImpl.class]] bound.
+2023-08-24 15:02:01.294  INFO 10580 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2023-08-24 15:02:01.310 ERROR 10580 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The bean 'step1', defined in class path resource [vn/ndm/service/impl/ExportDLLImpl.class], could not be registered. A bean with that name has already been defined in class path resource [vn/ndm/service/impl/DatabaseStatsToolImpl.class] and overriding is disabled.
+
+Action:
+
+Consider renaming one of the beans or enabling overriding by setting spring.main.allow-bean-definition-overriding=true
+
+2023-08-24 15:04:27.681  INFO 1900 --- [main] vn.ndm.BatchProcessingApplication        : Starting BatchProcessingApplication using Java 1.8.0_321 on VIRUS-BUG with PID 1900 (D:\example\jobs\spring-batch\target\classes started by admin in D:\example\jobs\spring-batch)
+2023-08-24 15:04:27.684  INFO 1900 --- [main] vn.ndm.BatchProcessingApplication        : No active profile set, falling back to 1 default profile: "default"
+2023-08-24 15:04:27.987  WARN 1900 --- [main] s.c.a.AnnotationConfigApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.support.BeanDefinitionOverrideException: Invalid bean definition with name 'step1' defined in class path resource [vn/ndm/service/impl/ExportDLLImpl.class]: Cannot register bean definition [Root bean: class [null]; scope=; abstract=false; lazyInit=null; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=exportDLLImpl; factoryMethodName=step1; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [vn/ndm/service/impl/ExportDLLImpl.class]] for bean 'step1': There is already [Root bean: class [null]; scope=; abstract=false; lazyInit=null; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=databaseStatsToolImpl; factoryMethodName=step1; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [vn/ndm/service/impl/DatabaseStatsToolImpl.class]] bound.
+2023-08-24 15:04:27.994  INFO 1900 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2023-08-24 15:04:28.010 ERROR 1900 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The bean 'step1', defined in class path resource [vn/ndm/service/impl/ExportDLLImpl.class], could not be registered. A bean with that name has already been defined in class path resource [vn/ndm/service/impl/DatabaseStatsToolImpl.class] and overriding is disabled.
+
+Action:
+
+Consider renaming one of the beans or enabling overriding by setting spring.main.allow-bean-definition-overriding=true
+
+2023-08-24 15:08:55.340  INFO 6868 --- [main] vn.ndm.BatchProcessingApplication        : Starting BatchProcessingApplication using Java 1.8.0_321 on VIRUS-BUG with PID 6868 (D:\example\jobs\spring-batch\target\classes started by admin in D:\example\jobs\spring-batch)
+2023-08-24 15:08:55.343  INFO 6868 --- [main] vn.ndm.BatchProcessingApplication        : No active profile set, falling back to 1 default profile: "default"
+2023-08-24 15:08:55.641  WARN 6868 --- [main] s.c.a.AnnotationConfigApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.support.BeanDefinitionOverrideException: Invalid bean definition with name 'step1' defined in class path resource [vn/ndm/service/impl/ExportDLLImpl.class]: Cannot register bean definition [Root bean: class [null]; scope=; abstract=false; lazyInit=null; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=exportDLLImpl; factoryMethodName=step1; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [vn/ndm/service/impl/ExportDLLImpl.class]] for bean 'step1': There is already [Root bean: class [null]; scope=; abstract=false; lazyInit=null; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=databaseStatsToolImpl; factoryMethodName=step1; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [vn/ndm/service/impl/DatabaseStatsToolImpl.class]] bound.
+2023-08-24 15:08:55.649  INFO 6868 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2023-08-24 15:08:55.664 ERROR 6868 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The bean 'step1', defined in class path resource [vn/ndm/service/impl/ExportDLLImpl.class], could not be registered. A bean with that name has already been defined in class path resource [vn/ndm/service/impl/DatabaseStatsToolImpl.class] and overriding is disabled.
+
+Action:
+
+Consider renaming one of the beans or enabling overriding by setting spring.main.allow-bean-definition-overriding=true
+
+2023-08-24 15:09:20.053  INFO 10956 --- [main] vn.ndm.BatchProcessingApplication        : Starting BatchProcessingApplication using Java 1.8.0_321 on VIRUS-BUG with PID 10956 (D:\example\jobs\spring-batch\target\classes started by admin in D:\example\jobs\spring-batch)
+2023-08-24 15:09:20.056  INFO 10956 --- [main] vn.ndm.BatchProcessingApplication        : No active profile set, falling back to 1 default profile: "default"
+2023-08-24 15:09:20.416  WARN 10956 --- [main] s.c.a.AnnotationConfigApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.support.BeanDefinitionOverrideException: Invalid bean definition with name 'step1' defined in class path resource [vn/ndm/service/impl/ExportDLLImpl.class]: Cannot register bean definition [Root bean: class [null]; scope=; abstract=false; lazyInit=null; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=exportDLLImpl; factoryMethodName=step1; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [vn/ndm/service/impl/ExportDLLImpl.class]] for bean 'step1': There is already [Root bean: class [null]; scope=; abstract=false; lazyInit=null; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=databaseStatsToolImpl; factoryMethodName=step1; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [vn/ndm/service/impl/DatabaseStatsToolImpl.class]] bound.
+2023-08-24 15:09:20.424  INFO 10956 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2023-08-24 15:09:20.442 ERROR 10956 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The bean 'step1', defined in class path resource [vn/ndm/service/impl/ExportDLLImpl.class], could not be registered. A bean with that name has already been defined in class path resource [vn/ndm/service/impl/DatabaseStatsToolImpl.class] and overriding is disabled.
+
+Action:
+
+Consider renaming one of the beans or enabling overriding by setting spring.main.allow-bean-definition-overriding=true
+
+2023-08-24 15:14:06.180  INFO 6384 --- [main] vn.ndm.BatchProcessingApplication        : Starting BatchProcessingApplication using Java 1.8.0_321 on VIRUS-BUG with PID 6384 (D:\example\jobs\spring-batch\target\classes started by admin in D:\example\jobs\spring-batch)
+2023-08-24 15:14:06.184  INFO 6384 --- [main] vn.ndm.BatchProcessingApplication        : No active profile set, falling back to 1 default profile: "default"
+2023-08-24 15:14:06.570  WARN 6384 --- [main] s.c.a.AnnotationConfigApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.support.BeanDefinitionOverrideException: Invalid bean definition with name 'step1' defined in class path resource [vn/ndm/service/impl/ExportDLLImpl.class]: Cannot register bean definition [Root bean: class [null]; scope=; abstract=false; lazyInit=null; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=exportDLLImpl; factoryMethodName=step1; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [vn/ndm/service/impl/ExportDLLImpl.class]] for bean 'step1': There is already [Root bean: class [null]; scope=; abstract=false; lazyInit=null; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=databaseStatsToolImpl; factoryMethodName=step1; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [vn/ndm/service/impl/DatabaseStatsToolImpl.class]] bound.
+2023-08-24 15:14:06.578  INFO 6384 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2023-08-24 15:14:06.597 ERROR 6384 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The bean 'step1', defined in class path resource [vn/ndm/service/impl/ExportDLLImpl.class], could not be registered. A bean with that name has already been defined in class path resource [vn/ndm/service/impl/DatabaseStatsToolImpl.class] and overriding is disabled.
+
+Action:
+
+Consider renaming one of the beans or enabling overriding by setting spring.main.allow-bean-definition-overriding=true
+
+2023-08-24 15:20:53.526  INFO 2328 --- [main] vn.ndm.BatchProcessingApplication        : Starting BatchProcessingApplication using Java 1.8.0_321 on VIRUS-BUG with PID 2328 (D:\example\jobs\spring-batch\target\classes started by admin in D:\example\jobs\spring-batch)
+2023-08-24 15:20:53.529  INFO 2328 --- [main] vn.ndm.BatchProcessingApplication        : No active profile set, falling back to 1 default profile: "default"
+2023-08-24 15:20:53.817  WARN 2328 --- [main] s.c.a.AnnotationConfigApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.support.BeanDefinitionOverrideException: Invalid bean definition with name 'step1' defined in class path resource [vn/ndm/service/impl/ExportDLLImpl.class]: Cannot register bean definition [Root bean: class [null]; scope=; abstract=false; lazyInit=null; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=exportDLLImpl; factoryMethodName=step1; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [vn/ndm/service/impl/ExportDLLImpl.class]] for bean 'step1': There is already [Root bean: class [null]; scope=; abstract=false; lazyInit=null; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=databaseStatsToolImpl; factoryMethodName=step1; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [vn/ndm/service/impl/DatabaseStatsToolImpl.class]] bound.
+2023-08-24 15:20:53.824  INFO 2328 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2023-08-24 15:20:53.839 ERROR 2328 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The bean 'step1', defined in class path resource [vn/ndm/service/impl/ExportDLLImpl.class], could not be registered. A bean with that name has already been defined in class path resource [vn/ndm/service/impl/DatabaseStatsToolImpl.class] and overriding is disabled.
+
+Action:
+
+Consider renaming one of the beans or enabling overriding by setting spring.main.allow-bean-definition-overriding=true
+
+2023-08-24 15:21:15.585  INFO 13756 --- [main] vn.ndm.BatchProcessingApplication        : Starting BatchProcessingApplication using Java 1.8.0_321 on VIRUS-BUG with PID 13756 (D:\example\jobs\spring-batch\target\classes started by admin in D:\example\jobs\spring-batch)
+2023-08-24 15:21:15.588  INFO 13756 --- [main] vn.ndm.BatchProcessingApplication        : No active profile set, falling back to 1 default profile: "default"
+2023-08-24 15:21:16.222  WARN 13756 --- [main] s.c.a.AnnotationConfigApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'scheduleJob' defined in file [D:\example\jobs\spring-batch\target\classes\vn\ndm\config\ScheduleJob.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'org.springframework.batch.core.configuration.annotation.SimpleBatchConfiguration': Unsatisfied dependency expressed through field 'dataSource'; nested exception is org.springframework.beans.factory.NoUniqueBeanDefinitionException: No qualifying bean of type 'javax.sql.DataSource' available: expected single matching bean but found 18: mysql,9029,eoffice,eofficev2,vgo-admin_vg,vgo-cmdv_v3,vgo-quartz,vgo-csp_vg,vgo-cmdv_v2_new,vgo-cmdv_sync,vgo-cmdv_sms,vgc-admin_vg,vgc-cmdv_v3,vgc-quartz,vgc-csp_vg,vgc-cmdv_v2_new,vgc-cmdv_sync,vgc-cmdv_sms
+2023-08-24 15:21:16.229  INFO 13756 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2023-08-24 15:21:16.246 ERROR 13756 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field dataSource in org.springframework.batch.core.configuration.annotation.AbstractBatchConfiguration required a single bean, but 18 were found:
+	- mysql: defined by method 'mysqlDataSource' in class path resource [vn/ndm/config/DataSourceConfiguration.class]
+	- 9029: defined by method 'webCharging' in class path resource [vn/ndm/config/DataSourceConfiguration.class]
+	- eoffice: defined by method 'eofficeVNPT' in class path resource [vn/ndm/config/DataSourceConfiguration.class]
+	- eofficev2: defined by method 'eofficeVNPT2' in class path resource [vn/ndm/config/DataSourceConfiguration.class]
+	- vgo-admin_vg: defined by method 'vasgateOld' in class path resource [vn/ndm/config/DataSourceConfiguration.class]
+	- vgo-cmdv_v3: defined by method 'vasgateOld1' in class path resource [vn/ndm/config/DataSourceConfiguration.class]
+	- vgo-quartz: defined by method 'vasgateOld2' in class path resource [vn/ndm/config/DataSourceConfiguration.class]
+	- vgo-csp_vg: defined by method 'vasgateOld3' in class path resource [vn/ndm/config/DataSourceConfiguration.class]
+	- vgo-cmdv_v2_new: defined by method 'vasgateOld4' in class path resource [vn/ndm/config/DataSourceConfiguration.class]
+	- vgo-cmdv_sync: defined by method 'vasgateOld5' in class path resource [vn/ndm/config/DataSourceConfiguration.class]
+	- vgo-cmdv_sms: defined by method 'vasgateOld6' in class path resource [vn/ndm/config/DataSourceConfiguration.class]
+	- vgc-admin_vg: defined by method 'vasgateCloud' in class path resource [vn/ndm/config/DataSourceConfiguration.class]
+	- vgc-cmdv_v3: defined by method 'vasgateCloud1' in class path resource [vn/ndm/config/DataSourceConfiguration.class]
+	- vgc-quartz: defined by method 'vasgateCloud2' in class path resource [vn/ndm/config/DataSourceConfiguration.class]
+	- vgc-csp_vg: defined by method 'vasgateCloud3' in class path resource [vn/ndm/config/DataSourceConfiguration.class]
+	- vgc-cmdv_v2_new: defined by method 'vasgateCloud4' in class path resource [vn/ndm/config/DataSourceConfiguration.class]
+	- vgc-cmdv_sync: defined by method 'vasgateCloud5' in class path resource [vn/ndm/config/DataSourceConfiguration.class]
+	- vgc-cmdv_sms: defined by method 'vasgateCloud6' in class path resource [vn/ndm/config/DataSourceConfiguration.class]
+
+
+Action:
+
+Consider marking one of the beans as @Primary, updating the consumer to accept multiple beans, or using @Qualifier to identify the bean that should be consumed
+

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="30">
+    <Properties>
+        <Property name="LOG_PATTERN">%d{yyyy-MM-dd HH:mm:ss.SSS} | %-20.20thread | %-5.5p | %m%n</Property>
+        <Property name="DATA_PATTERN">%m%n</Property>
+        <Property name="WORK">logs/work</Property>
+        <Property name="LOGS">logs</Property>
+    </Properties>
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT" follow="true">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+        </Console>
+        <!--        ==========================================================-->
+        <RollingFile name="log-module"
+                     fileName="${LOGS}/module.log"
+                     filePattern="${LOGS}/archive/module.%d{yyyy-MM-dd}.log.gz">
+            <PatternLayout>
+                <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} | %c{-10} | %thread | %p | %m%n</Pattern>
+            </PatternLayout>
+            <Policies>
+                <OnStartupTriggeringPolicy/>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+            </Policies>
+        </RollingFile>
+        <!--===================================================================================================================-->
+        <RollingFile name="logs-of-day" fileName="${LOGS}/logs-of-day.log"
+                     filePattern="${LOGS}/archive/logs-of-day.%d{yyyy-MM-dd}.log">
+            <PatternLayout pattern="${DATA_PATTERN}"/>
+            <Policies>
+                <OnStartupTriggeringPolicy/>
+            </Policies>
+        </RollingFile>
+        <!--===================================================================================================================-->
+        <RollingFile name="log-inbound" fileName="${LOGS}/work/log-inbound.log"
+                     filePattern="${WORK}/wait/work-log-inbound.%i.%d{yyyy-MM-dd-HHmmss}.log">
+            <PatternLayout pattern="${DATA_PATTERN}"/>
+            <Policies>
+                <OnStartupTriggeringPolicy/>
+                <TimeBasedTriggeringPolicy interval="10" modulate="true"/>
+                <CronTriggeringPolicy schedule="0 * * * * ? *" evaluateOnStartup="true"/>
+            </Policies>
+        </RollingFile>
+        <!--===================================================================================================================-->
+        <RollingFile name="logs-day-msg" fileName="${LOGS}/logs-day-msg.log"
+                     filePattern="${LOGS}/archive/logs-day-msg.%d{yyyy-MM-dd}.log">
+            <PatternLayout pattern="${DATA_PATTERN}"/>
+            <Policies>
+                <OnStartupTriggeringPolicy/>
+            </Policies>
+        </RollingFile>
+        <!--===================================================================================================================-->
+        <RollingFile name="log-msg-info" fileName="${LOGS}/work/log-msg-info.log"
+                     filePattern="${WORK}/wait/work-log-msg-info.%i.%d{yyyy-MM-dd-HHmmss}.log">
+            <PatternLayout pattern="${DATA_PATTERN}"/>
+            <Policies>
+                <OnStartupTriggeringPolicy/>
+                <TimeBasedTriggeringPolicy interval="10" modulate="true"/>
+                <CronTriggeringPolicy schedule="0 * * * * ? *" evaluateOnStartup="true"/>
+            </Policies>
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <Logger name="log-inbound" level="info" additivity="false">
+            <AppenderRef ref="log-inbound"/>
+        </Logger>
+        <Logger name="log-msg-info" level="info" additivity="false">
+            <AppenderRef ref="log-msg-info"/>
+        </Logger>
+        <Logger name="logs-of-day" level="info" additivity="false">
+            <AppenderRef ref="logs-of-day"/>
+        </Logger>
+        <Logger name="logs-day-msg" level="info" additivity="false">
+            <AppenderRef ref="logs-day-msg"/>
+        </Logger>
+        <Root level="info">
+            <AppenderRef ref="Console"/>
+        </Root>
+        <!--        test/debug-->
+        <Logger name="vn.neo" level="debug" additivity="false">
+            <AppenderRef ref="log-module"/>
+            <AppenderRef ref="Console"/>
+        </Logger>
+    </Loggers>
+</Configuration>

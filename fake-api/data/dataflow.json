@@ -1,0 +1,54 @@
+{
+  "traceId": "dataflow:SendCmd_5600001831517016",
+  "nanoEnd": "5600002138336066",
+  "dataflow": [
+    "start_1",
+    "groovy_2",
+    "end_3"
+  ],
+  "nanoStart": "5600001833637330",
+  "startParameters": {
+    "IP_client": "localhost",
+    "cmd": "VASPRO.SERVICEACTION -subscriber 84938175255 -arg0 999 -arg1 CHECK_MAXPRICE_NDAY -arg2 30 -arg3 VAS_XH -arg4 vms_vas -arg5 vms_vas",
+    "serviceName": "dataflow:SendCmd"
+  },
+  "context": {
+    "dataflow_param:APACHE_LOAD_BALANCING_1": "http://localhost:8090",
+    "dataflow_param:MOBIFONE_SUBSCRIBER": "8490,8493,84120,84128,84123,84122,84126,84121,848,847",
+    "IP_client": "localhost",
+    "CMD_RESPONSE": "CHECK_MAXPRICEVAS_SUCC: 12C120,1440000",
+    "dataflow_param:sqlmodule": "http://localhost:8080/sqldfservices/SqlServices.SqlServicesHttpSoap11Endpoint/",
+    "serviceName": "dataflow:SendCmd",
+    "dataflow_param:APACHE_LOAD_BALANCING_VIP": "http://localhost:8090",
+    "dataflow_param:sqlmodule_test": "http://localhost:8080/SqlServices/services/SqlServices.SqlServicesHttpSoap11Endpoint/",
+    "dataflow_param:utilmodule_test": "http://localhost:8080/services1/UtilServices.UtilServicesHttpSoap11Endpoint/",
+    "dataflow_param:IP_LIST_PERMIT": "localhost,localhost,localhost",
+    "dataflow_param:utilmodule": "http://localhost:8080/services/UtilServices.UtilServicesHttpSoap11Endpoint/",
+    "cmd": "VASPRO.SERVICEACTION -subscriber 84938175255 -arg0 999 -arg1 CHECK_MAXPRICE_NDAY -arg2 30 -arg3 VAS_XH -arg4 vms_vas -arg5 vms_vas",
+    "dataflow_param:APACHE_LOAD_BALANCING_2": "http://localhost:8080",
+    "dataflow_param:IP_LIST_REGISTER_PARTNER": "localhost;localhost;localhost;localhost;localhost;localhost;localhost",
+    "dataflow_param:FC_PROFILE": "FCZ:0,FCT2:0,TTN:0,FCPV:0,TSFC:1,CFC:0,TSFB:1,FCDN:0",
+    "dataflow_param:DATA_FLOW_BASE_URL": "http://localhost/df/call?",
+    "ErrorCodeAPI": "true",
+    "ErrorDescAPI": "1",
+    "dataflow_param:APACHE_LOAD_BALANCING_VIP_TEST": "http://localhost:8080"
+  },
+  "serviceName": "dataflow:SendCmd",
+  "steps": {
+    "groovy_2": {
+      "taskType": "groovy",
+      "nanoTaskStart": "5600001834058764",
+      "taskStartDate": "2024/06/20 11:29:21",
+      "nanoTaskEnd": "5600002138289282",
+      "taskId": "groovy_2"
+    },
+    "start_1": {
+      "taskType": "start",
+      "nanoTaskStart": "5600001833898522",
+      "taskStartDate": "2024/06/20 11:29:21",
+      "nanoTaskEnd": "5600001833913656",
+      "taskId": "start_1"
+    }
+  },
+  "startDate": "2024/06/20 11:29:21"
+}

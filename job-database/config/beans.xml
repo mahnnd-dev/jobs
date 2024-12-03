@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--db local-->
+    <bean id="mysql" class="com.zaxxer.hikari.HikariDataSource">
+        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/admin"/>
+        <property name="username" value="root"/>
+        <property name="password" value="123456"/>
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+    </bean>
+    <!--db 9029-->
+    <bean id="ctt" class="com.zaxxer.hikari.HikariDataSource">
+        <property name="jdbcUrl" value="jdbc:oracle:thin:@//10.252.10.221:1521/mpay"/>
+        <property name="username" value="charging_admin"/>
+        <property name="password" value="charging_admin"/>
+        <property name="driverClassName" value="oracle.jdbc.OracleDriver"/>
+    </bean>
+    <!--db 9029-->
+    <bean id="vas-online" class="com.zaxxer.hikari.HikariDataSource">
+        <property name="jdbcUrl" value="jdbc:oracle:thin:@//10.252.10.221:1521/mpay"/>
+        <property name="username" value="admin_msocial_sg"/>
+        <property name="password" value="admin"/>
+        <property name="driverClassName" value="oracle.jdbc.OracleDriver"/>
+    </bean>
+</beans>

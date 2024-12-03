@@ -1,0 +1,26 @@
+application:
+  name: Module-Validate-Api
+  channel: SYSTEM
+  organization: NEO JSC
+  version: 1.0
+  company: NEO JSC
+  team: SMSC Team
+  author: ManhND
+  create-date: 01/01/2024
+server:
+  port: 8080
+  tomcat:
+    max-threads: 1000
+    accept-count: 2000
+    max-connections: 1000
+    min-spare-threads: 10
+    connection-timeout:
+      seconds: 120000
+app:
+  module:
+    sys-id: 3
+    type: E
+    instance: '01'
+    name:
+    ip-db: 10.252.10.149
+    ip-db-log: 10.252.10.149

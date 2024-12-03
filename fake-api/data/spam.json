@@ -1,0 +1,30 @@
+{
+  "state": 1,
+  "msg": "OK",
+  "data": [
+    {
+      "pkg": "KF",
+      "service_key": "MOBION",
+      "note": "",
+      "desc": "KF",
+      "price": 10000,
+      "cycle": 1
+    },
+    {
+      "pkg": "HD200",
+      "service_key": "DICH_VU_4G",
+      "note": "Đăng ký gói cước <B>HD200</B> của MobiFone chỉ 200k/tháng nhận ngay 18GB data tốc độ cao",
+      "desc": "Đăng ký gói cước HD200 của MobiFone chỉ 200k/tháng nhận ngay 18GB data tốc độ cao",
+      "price": 200000,
+      "cycle": 30
+    },
+    {
+      "pkg": "CGDG",
+      "service_key": "CLOUD_GAMING",
+      "note": "",
+      "desc": "CGDG",
+      "price": 99000,
+      "cycle": 30
+    }
+  ]
+}

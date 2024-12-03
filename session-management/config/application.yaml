@@ -1,0 +1,22 @@
+application:
+  name: Session-Management
+  organization: Company Neo
+  version: 1.0
+  company: NEO JSC
+  by-name: Manhnd
+session-management:
+  max-session: 250
+  # Session hold scan time
+  time-keep-alive: 30000
+  # Number of initialized sessions
+  int-session: 20
+  # Minimum number of sessions
+  min-session: 2
+  # Queue waiting time
+  time-wait-free: 10000
+  # session time expires
+  session-time-expire: 300000
+  # Session lifetime 3p
+  session-alive: 180000
+  # Session scan time 10s
+  fixe-delay: 10000

@@ -1,0 +1,12 @@
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+    <!-- khai báo thread pool -->
+    <bean id="thread-pool" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+        <property name="corePoolSize" value="50"/>
+        <property name="maxPoolSize" value="128"/>
+        <property name="keepAliveSeconds" value="10"/>
+        <property name="threadNamePrefix" value="coherence-gw-"/>
+        <property name="WaitForTasksToCompleteOnShutdown" value="true"/>
+    </bean>
+</beans>

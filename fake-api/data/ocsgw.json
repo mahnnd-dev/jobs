@@ -1,0 +1,31 @@
+{
+  "code": 0,
+  "message": "Thành công",
+  "data": {
+    "imsi": "452019926286981",
+    "profile": "QT2",
+    "simState": "ACTIVE",
+    "homeZone1": "",
+    "homeZone2": "",
+    "homeZone3": "",
+    "homeZone4": "",
+    "homeZone5": "",
+    "psHomeZone1": "",
+    "psHomeZone2": "",
+    "psHomeZone3": "",
+    "language": "Vietnamese",
+    "simPin": "",
+    "mainBalance": 16100,
+    "loanAmount": 0,
+    "suspendRecharge": false,
+    "allowBalanceTransfer": true,
+    "postCallNotification": false,
+    "validDate": "20191013",
+    "inactiveDate": "20250104",
+    "inactive2Date": "20250114",
+    "deActiveDate": "20250213",
+    "activeDate": "20191013",
+    "prepaid": true,
+    "bundleList": []
+  }
+}

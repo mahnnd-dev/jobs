@@ -1,0 +1,8 @@
+job:
+  thread-pool:
+    core-pool-size: 50
+    max-pool-size: 200
+    queue-capacity: 1000
+  path:
+    read-file: server_ip/servers.csv
+    export-file: server_ip/

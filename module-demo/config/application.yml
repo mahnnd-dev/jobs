@@ -1,0 +1,98 @@
+application:
+  name: Module-Demo
+  channel: SYSTEM
+  organization: NEO JSC
+  version: 1.0
+  company: NEO JSC
+  team: SMSC Team
+  author: ManhND
+  create-date: 01/01/2024
+server:
+  port: 8080
+  tomcat:
+    max-threads: 1000
+    accept-count: 2000
+    max-connections: 1000
+    min-spare-threads: 10
+    connection-timeout:
+      seconds: 120000
+logging:
+  config: config/log4j2.xml
+  job:
+    sql-insert: insert into log_api_mt (sys_id,tsa_ip,tsa_acc,tsa_mty,tsa_mid,tda_ip,tda_acc,tda_mty,tda_mid,mti,smid,oa,oamnp,da,damnp,srr,mcl,dcs,status,rt,udl,ud,date_req,time_pro,json_req,json_res,req_org,res_org,cmd,trans_id,msg,num_msg,message_id) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,str_to_date(?,'%Y/%m/%d %H:%i:%s'),?,?,?,?,?,?,?,?,?,?)
+    batch-size: 5000
+    max-retry: 3
+    path:
+      time-read: 10000
+      file-pattern: work-log-inbound*.log
+      wait: logs/work/wait
+      retry: logs/work/retry
+      failed: logs/work/failed
+app:
+  module:
+    sys-id: 3
+    type: E
+    instance: '01'
+    name:
+    ip-db: 10.252.10.149
+    ip-db-log: 10.252.10.133
+redis:
+  password: mymasanpass#12x
+  connect-timeout: 10000
+  pool-config:
+    max-total: 2000
+    max-idle: 100
+    min-idle: 5
+    max-wait-millis: 20000
+    jmx-enable: false
+  sentinel:
+    master-name: mymaster
+    node:
+      - 10.252.10.166:26379
+      - 10.252.10.248:26379
+      - 10.252.10.212:26379
+spring:
+  task:
+    scheduling:
+      pool:
+        size: 10
+  main:
+    banner-mode: console
+  datasource:
+    jdbc-url: jdbc:mysql://${app.module.ip-db}:3306/smsc?useUnicode=yes&characterEncoding=UTF-8
+    username: smsc
+    password: smsc123
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    minimum-idle: 1
+    maximum-pool-size: 10
+    auto-commit: false
+    connection-timeout: 600000
+    idle-timeout: 600000
+    max-lifetime: 1800000
+    validation-timeout: 600000
+    leak-detection-threshold: 100000
+    pool-name: ${application.name}
+    data-source-properties: v$session.program=${application.name}
+  datasource-log:
+    jdbc-url: jdbc:mysql://${app.module.ip-db-log}:3306/cdrlog?useUnicode=yes&characterEncoding=UTF-8
+    username: cdrlog
+    password: cdrlog123
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    minimum-idle: 1
+    maximum-pool-size: 10
+    auto-commit: false
+    connection-timeout: 600000
+    idle-timeout: 600000
+    max-lifetime: 1800000
+    validation-timeout: 600000
+    leak-detection-threshold: 100000
+    pool-name: ${application.name}
+    data-source-properties: v$session.program=${application.name}
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect

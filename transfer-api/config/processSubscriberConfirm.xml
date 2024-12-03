@@ -1,0 +1,690 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/processSubscriberConfirm" name="processSubscriberConfirm" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="GET">
+        <inSequence>
+            <propertyGroup>
+                <property name="uri.var.host" scope="default" type="STRING" value="http://localhost:8090"/>
+                <property expression="get-property(&quot;SYSTEM_DATE&quot;, &quot;yyyy-MM-dd'T'HH:mm:ss.SSS&quot;)"
+                          name="uri.var.startTimeStep1" scope="default" type="STRING"/>
+                <property name="uri.var.checkValidate" scope="default" type="STRING" value="true"/>
+            </propertyGroup>
+            <call>
+                <endpoint key="step1-mtConfiguration"/>
+            </call>
+            <log>
+                <property expression="get-property('query.param.sender')" name="sender: "/>
+                <property expression="get-property('query.param.receiver')" name="receiver: "/>
+                <property expression="get-property('query.param.message_content')" name="content: "/>
+            </log>
+            <propertyGroup>
+                <property expression="json-eval($)" name="uri.var.lstSoap8" scope="default" type="STRING"/>
+                <property name="uri.var.stepNameStep1" scope="default" type="STRING"
+                          value="processSubscriberConfirm/step1-mtConfiguration"/>
+                <property expression="json-eval($)" name="uri.var.reponseStep1" scope="default" type="STRING"/>
+                <property expression="get-property(&quot;SYSTEM_DATE&quot;, &quot;yyyy-MM-dd'T'HH:mm:ss.SSS&quot;)"
+                          name="uri.var.endTimeStep1" scope="default" type="STRING"/>
+                <property expression="get-property(&quot;SYSTEM_DATE&quot;, &quot;yyyy-MM-dd'T'HH:mm:ss.SSS&quot;)"
+                          name="uri.var.startTimeStep2" scope="default" type="STRING"/>
+            </propertyGroup>
+            <call>
+                <endpoint key="step2-systemParameter"/>
+            </call>
+            <propertyGroup>
+                <property expression="json-eval($.[0].SERVER_PORT)" name="uri.var.SERVER_PORT" scope="default"
+                          type="STRING"/>
+                <property expression="json-eval($)" name="uri.var.lstSoap35" scope="default" type="STRING"/>
+                <property expression="json-eval($.[0].SERVER_HOST)" name="uri.var.SERVER_HOST" scope="default"
+                          type="STRING"/>
+                <property expression="get-property(&quot;SYSTEM_DATE&quot;, &quot;yyyy-MM-dd'T'HH:mm:ss.SSS&quot;)"
+                          name="uri.var.endTimeStep2" scope="default" type="STRING"/>
+                <property expression="get-property(&quot;SYSTEM_DATE&quot;, &quot;yyyy-MM-dd'T'HH:mm:ss.SSS&quot;)"
+                          name="uri.var.startTimeStep3" scope="default" type="STRING"/>
+                <property expression="json-eval($.[0].SERVICE_NUMBER)" name="uri.var.SERVICE_NUMBER" scope="default"
+                          type="STRING"/>
+                <property expression="json-eval($.[0].SMS_HOST)" name="uri.var.SMS_HOST" scope="default" type="STRING"/>
+                <property expression="json-eval($.[0].SMS_PORT)" name="uri.var.SMS_PORT" scope="default" type="STRING"/>
+                <property expression="json-eval($.[0].SMS_LOOKUP)" name="uri.var.SMS_LOOKUP" scope="default"
+                          type="STRING"/>
+                <property expression="json-eval($.[0].VASGATE_SERVER_IP)" name="uri.var.VASGATE_SERVER_IP"
+                          scope="default" type="STRING"/>
+                <property expression="json-eval($.[0].VASGATE_SERVER_PORT)" name="uri.var.VASGATE_SERVER_PORT"
+                          scope="default" type="STRING"/>
+            </propertyGroup>
+            <payloadFactory media-type="json">
+                <format>
+                    {&#xd;
+                    "lstSoap8":$1,&#xd;
+                    "lstSoap35":$2&#xd;
+                    &#xd;
+                    }
+                </format>
+                <args>
+                    <arg evaluator="xml" expression="$ctx:uri.var.lstSoap8"/>
+                    <arg evaluator="xml" expression="$ctx:uri.var.lstSoap35"/>
+                </args>
+            </payloadFactory>
+            <call>
+                <endpoint key="step3-extractParameter"/>
+            </call>
+            <propertyGroup>
+                <property expression="get-property(&quot;SYSTEM_DATE&quot;, &quot;yyyy-MM-dd'T'HH:mm:ss.SSS&quot;)"
+                          name="uri.var.endTimeStep3" scope="default" type="STRING"/>
+                <property expression="get-property(&quot;SYSTEM_DATE&quot;, &quot;yyyy-MM-dd'T'HH:mm:ss.SSS&quot;)"
+                          name="uri.var.startTimeStep4" scope="default" type="STRING"/>
+            </propertyGroup>
+            <payloadFactory media-type="json">
+                <format>
+                    {&#xd;
+                    "lstSoap8":$1,&#xd;
+                    "serverIp":"$2",&#xd;
+                    "serverPort": "$3",&#xd;
+                    "contextPre":{&#xd;
+                    "SERVICE_NUMBER":"$4",&#xd;
+                    "message_content": "$5",&#xd;
+                    "sender": "$6",&#xd;
+                    "SMS_HOST": "$7",&#xd;
+                    "SMS_PORT": "$8",&#xd;
+                    "SMS_LOOKUP": "$9",&#xd;
+                    "receiver": "$10"&#xd;
+                    }&#xd;
+                    }
+                </format>
+                <args>
+                    <arg evaluator="xml" expression="$ctx:uri.var.lstSoap8"/>
+                    <arg evaluator="xml" expression="$ctx:uri.var.VASGATE_SERVER_IP"/>
+                    <arg evaluator="xml" expression="$ctx:uri.var.VASGATE_SERVER_PORT"/>
+                    <arg evaluator="xml" expression="$ctx:uri.var.SERVICE_NUMBER"/>
+                    <arg evaluator="xml" expression="$ctx:query.param.message_content"/>
+                    <arg evaluator="xml" expression="$ctx:query.param.sender"/>
+                    <arg evaluator="xml" expression="$ctx:uri.var.SMS_HOST"/>
+                    <arg evaluator="xml" expression="$ctx:uri.var.SMS_PORT"/>
+                    <arg evaluator="xml" expression="$ctx:uri.var.SMS_LOOKUP"/>
+                    <arg evaluator="xml" expression="$ctx:query.param.receiver"/>
+                </args>
+            </payloadFactory>
+            <log>
+                <property expression="get-property('uri.var.VASGATE_SERVER_IP')" name="ip===================="/>
+                <property expression="get-property('uri.var.VASGATE_SERVER_PORT')" name="port=================="/>
+            </log>
+            <call>
+                <endpoint key="step4-validateInput"/>
+            </call>
+            <propertyGroup>
+                <property expression="get-property(&quot;SYSTEM_DATE&quot;, &quot;yyyy-MM-dd'T'HH:mm:ss.SSS&quot;)"
+                          name="uri.var.endTimeStep4" scope="default" type="STRING"/>
+                <property expression="get-property(&quot;SYSTEM_DATE&quot;, &quot;yyyy-MM-dd'T'HH:mm:ss.SSS&quot;)"
+                          name="uri.var.startTimeStep5" scope="default" type="STRING"/>
+                <property expression="json-eval($.result)" name="uri.var.checkValidateInput" scope="default"
+                          type="STRING"/>
+                <property expression="json-eval($.context.TRANSACTION_ID)" name="uri.var.TRANSACTION_ID" scope="default"
+                          type="STRING"/>
+                <property expression="json-eval($)" name="uri.var.validateInput" scope="default" type="STRING"/>
+            </propertyGroup>
+            <log>
+                <property expression="get-property('uri.var.checkValidate')" name="uri.var.checkValidateInput"/>
+                <property expression="get-property('uri.var.TRANSACTION_ID')" name="TRANSACTION_ID============="/>
+            </log>
+            <filter regex="true" source="get-property('uri.var.checkValidateInput')">
+                <then>
+                    <call>
+                        <endpoint key="step5-getTransactionId"/>
+                    </call>
+                    <propertyGroup>
+                        <property expression="json-eval($.[0].SCRIPT_SHOP_ID)" name="uri.var.SCRIPT_SHOP_ID"
+                                  scope="default" type="STRING"/>
+                        <property expression="json-eval($.[0].SHARING_KEY)" name="uri.var.SHARING_KEY" scope="default"
+                                  type="STRING"/>
+                        <property expression="json-eval($.[0].MSISDN)" name="uri.var.MSISDN" scope="default"
+                                  type="STRING"/>
+                        <property expression="json-eval($.[0].PACKAGE_CODE)" name="uri.var.PACKAGE_CODE" scope="default"
+                                  type="STRING"/>
+                        <property expression="json-eval($.[0].SERVICE_ID)" name="uri.var.SERVICE_ID" scope="default"
+                                  type="STRING"/>
+                        <property expression="json-eval($)" name="uri.var.lstSoap12" scope="default" type="STRING"/>
+                        <property expression="json-eval($.[0].MESSAGE_CONTENT)" name="uri.var.MESSAGE_CONTENT"
+                                  scope="default" type="STRING"/>
+                        <property expression="json-eval($.[0].PACKAGE_CODE_TRANS_LOG_NC)"
+                                  name="uri.var.PACKAGE_CODE_TRANS_LOG_NC" scope="default" type="STRING"/>
+                        <property expression="json-eval($.[0].PACKAGE_PRIC)" name="uri.var.PACKAGE_PRICE"
+                                  scope="default" type="STRING"/>
+                        <property
+                                expression="get-property(&quot;SYSTEM_DATE&quot;, &quot;yyyy-MM-dd'T'HH:mm:ss.SSS&quot;)"
+                                name="uri.var.endTimeStep5" scope="default" type="STRING"/>
+                        <property
+                                expression="get-property(&quot;SYSTEM_DATE&quot;, &quot;yyyy-MM-dd'T'HH:mm:ss.SSS&quot;)"
+                                name="uri.var.startTimeStep6" scope="default" type="STRING"/>
+                        <property expression="json-eval($)" name="uri.var.transactionId" scope="default" type="STRING"/>
+                        <property expression="json-eval($.[0].CHANNEL_ID)" name="uri.var.CHANNEL_ID" scope="default"
+                                  type="STRING"/>
+                        <property expression="json-eval($.[0].CHANNEL_KEY)" name="uri.var.CHANNEL_KEY" scope="default"
+                                  type="STRING"/>
+                        <property expression="json-eval($.[0].TRANSACTION_ID)" name="uri.var.TRANSACTION_ID"
+                                  scope="default" type="STRING"/>
+                        <property expression="json-eval($.[0].PACKAGE_DYNAMIC)" name="uri.var.PACKAGE_DYNAMIC"
+                                  scope="default" type="STRING"/>
+                        <property expression="json-eval($.[0].BILLING_FLAG)" name="uri.var.BILLING_FLAG" scope="default"
+                                  type="STRING"/>
+                        <property expression="json-eval($.[0].SEND_SMS)" name="uri.var.SEND_SMS" scope="default"
+                                  type="STRING"/>
+                        <property expression="json-eval($.[0].PARTNER_KEY)" name="uri.var.PARTNER_KEY" scope="default"
+                                  type="STRING"/>
+                        <property expression="json-eval($.[0].CHARGING_TYPE)" name="uri.var.CHARGING_TYPE"
+                                  scope="default" type="STRING"/>
+                        <property expression="json-eval($.[0].HAVE_MAINTAIN)" name="uri.var.HAVE_MAINTAIN"
+                                  scope="default" type="STRING"/>
+                        <property expression="json-eval($.[0].PACKAGE_CODE_SMS)" name="uri.var.PACKAGE_CODE_SMS"
+                                  scope="default" type="STRING"/>
+                        <property expression="json-eval($.[0].PACKAGE_CYCLE)" name="uri.var.PACKAGE_CYCLE"
+                                  scope="default" type="STRING"/>
+                        <property expression="json-eval($.[0].SERVICE_KEY)" name="uri.var.SERVICE_KEY" scope="default"
+                                  type="STRING"/>
+                        <property expression="json-eval($.[0].PACKAGE_TYPE)" name="uri.var.PACKAGE_TYPE" scope="default"
+                                  type="STRING"/>
+                        <property expression="json-eval($.[0].SHARING_PARTNER_ID)" name="uri.var.SHARING_PARTNER_ID"
+                                  scope="default" type="STRING"/>
+                        <property expression="json-eval($.[0].AGENT_ID)" name="uri.var.AGENT_ID" scope="default"
+                                  type="STRING"/>
+                        <property expression="json-eval($.[0].PARTNER_ID)" name="uri.var.PARTNER_ID" scope="default"
+                                  type="STRING"/>
+                        <property expression="json-eval($.[0].MAINTAIN_CYCLE)" name="uri.var.MAINTAIN_CYCLE"
+                                  scope="default" type="STRING"/>
+                        <property expression="json-eval($.[0].PACKAGE_CODE_TRANS_LOG)"
+                                  name="uri.var.PACKAGE_CODE_TRANS_LOG" scope="default" type="STRING"/>
+                        <property expression="json-eval($.[0].REGISTERS_DAYS)" name="uri.var.REGISTERS_DAYS"
+                                  scope="default" type="STRING"/>
+                    </propertyGroup>
+                    <call>
+                        <endpoint key="step6-extractData"/>
+                    </call>
+                    <propertyGroup>
+                        <property
+                                expression="get-property(&quot;SYSTEM_DATE&quot;, &quot;yyyy-MM-dd'T'HH:mm:ss.SSS&quot;)"
+                                name="uri.var.endTimeStep6" scope="default" type="STRING"/>
+                        <property
+                                expression="get-property(&quot;SYSTEM_DATE&quot;, &quot;yyyy-MM-dd'T'HH:mm:ss.SSS&quot;)"
+                                name="uri.var.startTimeStep7" scope="default" type="STRING"/>
+                    </propertyGroup>
+                    <payloadFactory media-type="json">
+                        <format>
+                            {&#xd;
+                            "lstSoap8": $1,&#xd;
+                            "scriptShopId":"$2",&#xd;
+                            "sharingKey": "$3",&#xd;
+                            "msisdn":"$4",&#xd;
+                            "packageCode":"$5",&#xd;
+                            "serviceId":"$6",&#xd;
+                            &#xd;
+                            "contextPre" :{&#xd;
+                            "PACKAGE_CODE":"$7",&#xd;
+                            "SERVICE_KEY":"$8",&#xd;
+                            "TRANSACTION_ID" : "$9",&#xd;
+                            "SERVICE_KEY_SMS" : "$10",&#xd;
+                            "SEND_SMS" : "$11",&#xd;
+                            "sharingkey" : "$12",&#xd;
+                            "SERVICE_NUMBER":"$13",&#xd;
+                            "SMS_HOST":"$14",&#xd;
+                            "SMS_PORT":"$15",&#xd;
+                            "SMS_LOOKUP":"$16"&#xd;
+                            }&#xd;
+                            }
+                        </format>
+                        <args>
+                            <arg evaluator="xml" expression="$ctx:uri.var.lstSoap8"/>
+                            <arg evaluator="xml" expression="$ctx:uri.var.SCRIPT_SHOP_ID"/>
+                            <arg evaluator="xml" expression="$ctx:uri.var.SHARING_KEY"/>
+                            <arg evaluator="xml" expression="$ctx:uri.var.MSISDN"/>
+                            <arg evaluator="xml" expression="$ctx:uri.var.PACKAGE_CODE"/>
+                            <arg evaluator="xml" expression="$ctx:uri.var.SERVICE_ID"/>
+                            <arg evaluator="xml" expression="$ctx:uri.var.PACKAGE_CODE"/>
+                            <arg evaluator="xml" expression="$ctx:uri.var.SERVICE_KEY"/>
+                            <arg evaluator="xml" expression="$ctx:uri.var.TRANSACTION_ID"/>
+                            <arg evaluator="xml" expression="$ctx:uri.var.SERVICE_KEY_SMS"/>
+                            <arg evaluator="xml" expression="$ctx:uri.var.SEND_SMS"/>
+                            <arg evaluator="xml" expression="$ctx:uri.var.SHARING_KEY"/>
+                            <arg evaluator="xml" expression="$ctx:uri.var.SERVICE_NUMBER"/>
+                            <arg evaluator="xml" expression="$ctx:uri.var.SMS_HOST"/>
+                            <arg evaluator="xml" expression="$ctx:uri.var.SMS_PORT"/>
+                            <arg evaluator="xml" expression="$ctx:uri.var.SMS_LOOKUP"/>
+                        </args>
+                    </payloadFactory>
+                    <call>
+                        <endpoint key="step7-checkThueBaoUsedService"/>
+                    </call>
+                    <propertyGroup>
+                        <property
+                                expression="get-property(&quot;SYSTEM_DATE&quot;, &quot;yyyy-MM-dd'T'HH:mm:ss.SSS&quot;)"
+                                name="uri.var.endTimeStep7" scope="default" type="STRING"/>
+                        <property
+                                expression="get-property(&quot;SYSTEM_DATE&quot;, &quot;yyyy-MM-dd'T'HH:mm:ss.SSS&quot;)"
+                                name="uri.var.startTimeStep8" scope="default" type="STRING"/>
+                        <property expression="json-eval($.result)" name="uri.var.checkThueBaoUsedService"
+                                  scope="default" type="STRING"/>
+                        <property expression="json-eval($)" name="uri.var.checkThueBaoUsedService.all" scope="default"
+                                  type="STRING"/>
+                        <property expression="json-eval($.context.cmdRequest_with_value)"
+                                  name="uri.var.cmdRequest_with_value" scope="default" type="STRING"/>
+                        <property expression="json-eval($.context.cmdresponse_with_value)"
+                                  name="uri.var.cmdresponse_with_value" scope="default" type="STRING"/>
+                        <property expression="json-eval($.context.COMMANDS_RESULTS_ID)"
+                                  name="uri.var.COMMANDS_RESULTS_ID" scope="default" type="STRING"/>
+                        <property expression="json-eval($.context.COMMANDS_STATUS)" name="uri.var.COMMANDS_STATUS"
+                                  scope="default" type="STRING"/>
+                    </propertyGroup>
+                    <log>
+                        <property expression="get-property('uri.var.checkThueBaoUsedService')"
+                                  name="checkThueBaoUsedService"/>
+                    </log>
+                    <call>
+                        <endpoint key="step8-checkUsedService"/>
+                    </call>
+                    <propertyGroup>
+                        <property
+                                expression="get-property(&quot;SYSTEM_DATE&quot;, &quot;yyyy-MM-dd'T'HH:mm:ss.SSS&quot;)"
+                                name="uri.var.endTimeStep8" scope="default" type="STRING"/>
+                        <property
+                                expression="get-property(&quot;SYSTEM_DATE&quot;, &quot;yyyy-MM-dd'T'HH:mm:ss.SSS&quot;)"
+                                name="uri.var.startTimeStep10" scope="default" type="STRING"/>
+                        <property expression="json-eval($)" name="uri.var.checkUsedService" scope="default"
+                                  type="STRING"/>
+                    </propertyGroup>
+                    <log>
+                        <property expression="get-property('uri.var.checkUsedService')" name="checkUsedService"/>
+                    </log>
+                    <filter regex="true" source="get-property('uri.var.checkUsedService')">
+                        <then>
+                            <payloadFactory media-type="json">
+                                <format>
+                                    {&#xd;
+                                    "lstSoap8": $1,&#xd;
+                                    "msisdn": "$2",&#xd;
+                                    "messageContent": "$3",&#xd;
+                                    "scriptShopId": "$4",&#xd;
+                                    "sharingKey": "$5",&#xd;
+                                    "packageCodeTransLogNc": "$6",&#xd;
+                                    "vasgateServerIp": "$7",&#xd;
+                                    "vasgateServerPort": "$8",&#xd;
+                                    "packagePrice": "$9",&#xd;
+                                    "contextPre": {&#xd;
+                                    "cmdresponse_with_value": "$10",&#xd;
+                                    "PACKAGE_CODE": "$11",&#xd;
+                                    "SERVICE_ID": "$12",&#xd;
+                                    "CHARGING_TYPE": "$13",&#xd;
+                                    "SERVICE_KEY": "$14",&#xd;
+                                    "TRANSACTION_ID": "$15",&#xd;
+                                    "msisdn": "$16",&#xd;
+                                    "CHANNEL_KEY": "$17",&#xd;
+                                    "SEND_SMS": "$18",&#xd;
+                                    "sharingkey": "$19",&#xd;
+                                    "package_code": "$20",&#xd;
+                                    "content": "$21",&#xd;
+                                    "PACKAGE_DYNAMIC": "$22",&#xd;
+                                    "REGISTERS_DAYS": "$23",&#xd;
+                                    "PACKAGE_CODE_TRANS_LOG_NC": "$24",&#xd;
+                                    "CHANNEL_ID": "$25",&#xd;
+                                    "HAVE_MAINTAIN": "$26",&#xd;
+                                    "LIKE_MI_OR_VAS": "$27",&#xd;
+                                    "SERVICE_NUMBER": "$28",&#xd;
+                                    "SMS_HOST": "$29",&#xd;
+                                    "SMS_PORT": "$30",&#xd;
+                                    "SMS_LOOKUP": "$31"&#xd;
+                                    }&#xd;
+                                    }
+                                </format>
+                                <args>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.lstSoap8"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.MSISDN"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.MESSAGE_CONTENT"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.SCRIPT_SHOP_ID"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.SHARING_KEY"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.PACKAGE_CODE_TRANS_LOG_NC"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.VASGATE_SERVER_IP"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.VASGATE_SERVER_PORT"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.PACKAGE_PRICE"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.cmdresponse_with_value"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.PACKAGE_CODE"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.SERVICE_ID"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.CHARGING_TYPE"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.SERVICE_KEY"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.TRANSACTION_ID"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.MSISDN"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.CHANNEL_KEY"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.SEND_SMS"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.SHARING_KEY"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.PACKAGE_CODE"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.MESSAGE_CONTENT"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.PACKAGE_DYNAMIC"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.REGISTERS_DAYS"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.PACKAGE_CODE_TRANS_LOG_NC"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.CHANNEL_ID"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.HAVE_MAINTAIN"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.LIKE_MI_OR_VAS"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.SERVICE_NUMBER"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.SMS_HOST"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.SMS_PORT"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.SMS_LOOKUP"/>
+                                </args>
+                            </payloadFactory>
+                            <call>
+                                <endpoint key="step10-registerServiceSubscriber"/>
+                            </call>
+                            <propertyGroup>
+                                <property
+                                        expression="get-property(&quot;SYSTEM_DATE&quot;, &quot;yyyy-MM-dd'T'HH:mm:ss.SSS&quot;)"
+                                        name="uri.var.endTimeStep10" scope="default" type="STRING"/>
+                                <property expression="json-eval($)" name="uri.var.registerServiceSubscriber"
+                                          scope="default" type="STRING"/>
+                            </propertyGroup>
+                            <payloadFactory media-type="json">
+                                <format>
+                                    {&#xd;
+                                    "soap_7": {&#xd;
+                                    "taskType": "soap",&#xd;
+                                    "taskId": "soap_7",&#xd;
+                                    "taskStartDate": "$1",&#xd;
+                                    "nanoTaskStart": "$1",&#xd;
+                                    "nanoTaskEnd": "$2",&#xd;
+                                    "result":[],&#xd;
+                                    "stepName": "MT_CONFIGURATION"&#xd;
+                                    },&#xd;
+                                    "soap_8": {&#xd;
+                                    "taskType": "soap",&#xd;
+                                    "taskId": "soap_8",&#xd;
+                                    "taskStartDate": "$24",&#xd;
+                                    "nanoTaskStart": "$24",&#xd;
+                                    "result": $4,&#xd;
+                                    "nanoTaskEnd": "$8",&#xd;
+                                    "stepName": "SYSTEM_PARAMETER"&#xd;
+                                    },&#xd;
+                                    "groovy_11": {&#xd;
+                                    "taskType": "groovy",&#xd;
+                                    "taskId": "groovy_11",&#xd;
+                                    "taskStartDate": "$25",&#xd;
+                                    "nanoTaskStart": "$25",&#xd;
+                                    "result": true,&#xd;
+                                    "nanoTaskEnd": "$9",&#xd;
+                                    "stepName": "extract_parameter"&#xd;
+                                    },&#xd;
+                                    "gateway_8": {&#xd;
+                                    "taskType": "gateway",&#xd;
+                                    "taskId": "gateway_8",&#xd;
+                                    "taskStartDate": "$26",&#xd;
+                                    "nanoTaskStart": "$26",&#xd;
+                                    "result": true,&#xd;
+                                    "nanoTaskEnd": "$10",&#xd;
+                                    "stepName": "validate_input"&#xd;
+                                    },&#xd;
+                                    "soap_12": {&#xd;
+                                    "taskType": "soap",&#xd;
+                                    "taskId": "soap_12",&#xd;
+                                    "taskStartDate": "$27",&#xd;
+                                    "nanoTaskStart": "$27",&#xd;
+                                    "result": $32,&#xd;
+                                    "nanoTaskEnd": "$11",&#xd;
+                                    "stepName": "GET_TRANSACTION_ID"&#xd;
+                                    },&#xd;
+                                    "groovy_13": {&#xd;
+                                    "taskType": "groovy",&#xd;
+                                    "taskId": "groovy_13",&#xd;
+                                    "taskStartDate": "$28",&#xd;
+                                    "nanoTaskStart": "$28",&#xd;
+                                    "result": "Put data",&#xd;
+                                    "nanoTaskEnd": "$12",&#xd;
+                                    "stepName": "extract_data"&#xd;
+                                    },&#xd;
+                                    "groovy_4": {&#xd;
+                                    "taskType": "groovy",&#xd;
+                                    "taskId": "groovy_4",&#xd;
+                                    "taskStartDate": "$29",&#xd;
+                                    "nanoTaskStart": "$29",&#xd;
+                                    "result": true,&#xd;
+                                    "nanoTaskEnd": "$13",&#xd;
+                                    "stepName": "check_thue_bao_used_service"&#xd;
+                                    },&#xd;
+                                    "gateway_12": {&#xd;
+                                    "taskType": "gateway",&#xd;
+                                    "taskId": "gateway_12",&#xd;
+                                    "taskStartDate": "$30",&#xd;
+                                    "nanoTaskStart": "$30",&#xd;
+                                    "result": true,&#xd;
+                                    "nanoTaskEnd": "$14",&#xd;
+                                    "stepName": "check_used_service"&#xd;
+                                    },&#xd;
+                                    "groovy_39": {&#xd;
+                                    "taskType": "groovy",&#xd;
+                                    "taskId": "groovy_39",&#xd;
+                                    "taskStartDate": "$31",&#xd;
+                                    "nanoTaskStart": "$31",&#xd;
+                                    "result": $23,&#xd;
+                                    "nanoTaskEnd": "$15",&#xd;
+                                    "stepName": "register_service_subscriber"&#xd;
+                                    }&#xd;
+                                    }
+                                </format>
+                                <args>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.startTimeStep1"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.endTimeStep1"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.host"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.lstSoap35"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.lstSoap8"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.SERVER_HOST"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.SERVER_PORT"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.endTimeStep2"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.endTimeStep3"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.endTimeStep4"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.endTimeStep5"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.endTimeStep6"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.endTimeStep7"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.endTimeStep8"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.endTimeStep10"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.lstSoap12"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.SCRIPT_SHOP_ID"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.SHARING_KEY"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.MSISDN"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.PACKAGE_CODE"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.SERVICE_ID"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.checkUsedService"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.registerServiceSubscriber"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.startTimeStep2"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.startTimeStep3"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.startTimeStep4"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.startTimeStep5"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.startTimeStep6"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.startTimeStep7"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.startTimeStep8"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.startTimeStep10"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.transactionId"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.checkValidateInput"/>
+                                </args>
+                            </payloadFactory>
+                        </then>
+                        <else>
+                            <payloadFactory media-type="json">
+                                <format>
+                                    {&#xd;
+                                    "soap_7": {&#xd;
+                                    "taskType": "soap",&#xd;
+                                    "taskId": "soap_7",&#xd;
+                                    "taskStartDate": "$1",&#xd;
+                                    "nanoTaskStart": "$1",&#xd;
+                                    "nanoTaskEnd": "$2",&#xd;
+                                    "result":[],&#xd;
+                                    "stepName": "MT_CONFIGURATION"&#xd;
+                                    },&#xd;
+                                    "soap_8": {&#xd;
+                                    "taskType": "soap",&#xd;
+                                    "taskId": "soap_8",&#xd;
+                                    "taskStartDate": "$24",&#xd;
+                                    "nanoTaskStart": "$24",&#xd;
+                                    "result": $4,&#xd;
+                                    "nanoTaskEnd": "$8",&#xd;
+                                    "stepName": "SYSTEM_PARAMETER"&#xd;
+                                    },&#xd;
+                                    "groovy_11": {&#xd;
+                                    "taskType": "groovy",&#xd;
+                                    "taskId": "groovy_11",&#xd;
+                                    "taskStartDate": "$25",&#xd;
+                                    "nanoTaskStart": "$25",&#xd;
+                                    "result": true,&#xd;
+                                    "nanoTaskEnd": "$9",&#xd;
+                                    "stepName": "extract_parameter"&#xd;
+                                    },&#xd;
+                                    "gateway_8": {&#xd;
+                                    "taskType": "gateway",&#xd;
+                                    "taskId": "gateway_8",&#xd;
+                                    "taskStartDate": "$26",&#xd;
+                                    "nanoTaskStart": "$26",&#xd;
+                                    "result": true,&#xd;
+                                    "nanoTaskEnd": "$10",&#xd;
+                                    "stepName": "validate_input"&#xd;
+                                    },&#xd;
+                                    "soap_12": {&#xd;
+                                    "taskType": "soap",&#xd;
+                                    "taskId": "soap_12",&#xd;
+                                    "taskStartDate": "$27",&#xd;
+                                    "nanoTaskStart": "$27",&#xd;
+                                    "result": $32,&#xd;
+                                    "nanoTaskEnd": "$11",&#xd;
+                                    "stepName": "GET_TRANSACTION_ID"&#xd;
+                                    },&#xd;
+                                    "groovy_13": {&#xd;
+                                    "taskType": "groovy",&#xd;
+                                    "taskId": "groovy_13",&#xd;
+                                    "taskStartDate": "$28",&#xd;
+                                    "nanoTaskStart": "$28",&#xd;
+                                    "result": "",&#xd;
+                                    "nanoTaskEnd": "$12",&#xd;
+                                    "stepName": "extract_data"&#xd;
+                                    },&#xd;
+                                    "groovy_4": {&#xd;
+                                    "taskType": "groovy",&#xd;
+                                    "taskId": "groovy_4",&#xd;
+                                    "taskStartDate": "$29",&#xd;
+                                    "nanoTaskStart": "$29",&#xd;
+                                    "result": true,&#xd;
+                                    "nanoTaskEnd": "$13",&#xd;
+                                    "stepName": "check_thue_bao_used_service"&#xd;
+                                    },&#xd;
+                                    "gateway_12": {&#xd;
+                                    "taskType": "gateway",&#xd;
+                                    "taskId": "gateway_12",&#xd;
+                                    "taskStartDate": "$30",&#xd;
+                                    "nanoTaskStart": "$30",&#xd;
+                                    "result": $34,&#xd;
+                                    "nanoTaskEnd": "$14",&#xd;
+                                    "stepName": "check_used_service"&#xd;
+                                    }&#xd;
+                                    }
+                                </format>
+                                <args>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.startTimeStep1"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.endTimeStep1"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.host"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.lstSoap35"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.lstSoap8"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.SERVER_HOST"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.SERVER_PORT"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.endTimeStep2"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.endTimeStep3"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.endTimeStep4"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.endTimeStep5"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.endTimeStep6"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.endTimeStep7"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.endTimeStep8"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.endTimeStep10"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.lstSoap12"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.SCRIPT_SHOP_ID"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.SHARING_KEY"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.MSISDN"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.PACKAGE_CODE"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.SERVICE_ID"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.checkUsedService"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.registerServiceSubscriber"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.startTimeStep2"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.startTimeStep3"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.startTimeStep4"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.startTimeStep5"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.startTimeStep6"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.startTimeStep7"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.startTimeStep8"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.startTimeStep10"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.transactionId"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.checkValidateInput"/>
+                                    <arg evaluator="xml" expression="$ctx:uri.var.checkThueBaoUsedService.all"/>
+                                </args>
+                            </payloadFactory>
+                        </else>
+                    </filter>
+                </then>
+                <else>
+                    <payloadFactory media-type="json">
+                        <format>
+                            {&#xd;
+                            "soap_7": {&#xd;
+                            "taskType": "soap",&#xd;
+                            "taskId": "soap_7",&#xd;
+                            "taskStartDate": "$1",&#xd;
+                            "nanoTaskStart": "$1",&#xd;
+                            "nanoTaskEnd": "$2",&#xd;
+                            "result":[],&#xd;
+                            "stepName": "MT_CONFIGURATION"&#xd;
+                            },&#xd;
+                            "soap_8": {&#xd;
+                            "taskType": "soap",&#xd;
+                            "taskId": "soap_8",&#xd;
+                            "taskStartDate": "$17",&#xd;
+                            "nanoTaskStart": "$17",&#xd;
+                            "result": $4,&#xd;
+                            "nanoTaskEnd": "$8",&#xd;
+                            "stepName": "SYSTEM_PARAMETER"&#xd;
+                            },&#xd;
+                            "groovy_11": {&#xd;
+                            "taskType": "groovy",&#xd;
+                            "taskId": "groovy_11",&#xd;
+                            "taskStartDate": "$18",&#xd;
+                            "nanoTaskStart": "$18",&#xd;
+                            "result": "Put data",&#xd;
+                            "nanoTaskEnd": "$9",&#xd;
+                            "stepName": "extract_parameter"&#xd;
+                            },&#xd;
+                            "gateway_8": {&#xd;
+                            "taskType": "gateway",&#xd;
+                            "taskId": "gateway_8",&#xd;
+                            "taskStartDate": "$19",&#xd;
+                            "nanoTaskStart": "$19",&#xd;
+                            "result": $20,&#xd;
+                            "nanoTaskEnd": "$10",&#xd;
+                            "stepName": "validate_input"&#xd;
+                            }&#xd;
+                            }&#xd;
+                        </format>
+                        <args>
+                            <arg evaluator="xml" expression="$ctx:uri.var.startTimeStep1"/>
+                            <arg evaluator="xml" expression="$ctx:uri.var.endTimeStep1"/>
+                            <arg evaluator="xml" expression="$ctx:uri.var.host"/>
+                            <arg evaluator="xml" expression="$ctx:uri.var.lstSoap35"/>
+                            <arg evaluator="xml" expression="$ctx:uri.var.lstSoap8"/>
+                            <arg evaluator="xml" expression="$ctx:uri.var.SERVER_HOST"/>
+                            <arg evaluator="xml" expression="$ctx:uri.var.SERVER_PORT"/>
+                            <arg evaluator="xml" expression="$ctx:uri.var.endTimeStep2"/>
+                            <arg evaluator="xml" expression="$ctx:uri.var.endTimeStep3"/>
+                            <arg evaluator="xml" expression="$ctx:uri.var.endTimeStep4"/>
+                            <arg evaluator="xml" expression="$ctx:uri.var.endTimeStep5"/>
+                            <arg evaluator="xml" expression="$ctx:uri.var.SCRIPT_SHOP_ID"/>
+                            <arg evaluator="xml" expression="$ctx:uri.var.SHARING_KEY"/>
+                            <arg evaluator="xml" expression="$ctx:uri.var.MSISDN"/>
+                            <arg evaluator="xml" expression="$ctx:uri.var.PACKAGE_CODE"/>
+                            <arg evaluator="xml" expression="$ctx:uri.var.SERVICE_ID"/>
+                            <arg evaluator="xml" expression="$ctx:uri.var.startTimeStep2"/>
+                            <arg evaluator="xml" expression="$ctx:uri.var.startTimeStep3"/>
+                            <arg evaluator="xml" expression="$ctx:uri.var.startTimeStep4"/>
+                            <arg evaluator="xml" expression="$ctx:uri.var.validateInput"/>
+                        </args>
+                    </payloadFactory>
+                </else>
+            </filter>
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </resource>
+</api>
