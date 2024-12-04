@@ -2,7 +2,7 @@
 <jobs>
     <job>
         <name>JobClearTrash</name>
-        <classJob>vn.ndm.jobmanagement.module.JobClearTrash</classJob>
+        <classJob>dev.m.module.JobClearTrash</classJob>
         <active>1</active>
         <cronTime>300000</cronTime>
         <params>
@@ -12,7 +12,7 @@
     </job>
     <job>
         <name>JobClearTrash2</name>
-        <classJob>vn.ndm.jobmanagement.module.JobClearTrash2</classJob>
+        <classJob>dev.m.module.JobClearTrash2</classJob>
         <active>1</active>
         <cronTime>21111</cronTime>
         <params>

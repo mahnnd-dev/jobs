@@ -61,7 +61,7 @@
                                 <manifest>
                                     <addClasspath>true</addClasspath>
                                     <classpathPrefix>libs/</classpathPrefix>
-                                    <mainClass>com.ndm.fakeapi.FakeApiApplication</mainClass>
+                                    <mainClass>dev.m.FakeApiApplication</mainClass>
                                 </manifest>
                             </archive>
                             <outputDirectory>${project.build.directory}/libs</outputDirectory>
@@ -80,7 +80,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>libs/</classpathPrefix>
-                            <mainClass>com.ndm.fakeapi.FakeApiApplication</mainClass>
+                            <mainClass>dev.m.FakeApiApplication</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
